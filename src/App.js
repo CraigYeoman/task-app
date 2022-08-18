@@ -14,6 +14,8 @@ class App extends Component {
             },
       tasks: [],
     };
+
+    this.deleteTask =this.deleteTask.bind(this);
   }
   
   handleChange = (e) => {
@@ -34,6 +36,12 @@ class App extends Component {
             },
     });
   };
+
+  deleteTask = (e) => {
+    this.setState({
+
+    })
+  }
 
   render() {
     const { task, tasks } = this.state;
