@@ -2,13 +2,12 @@
 
 import React from "react";
 
-const Overview = (props) => {
-  const { tasks, deleteTask } = props;
-
+const Overview = ({ tasks, deleteTask}) => {
+ 
   return (
     <ul>
       {tasks.map((task) => {
-        return <li key={task.id}>{task.text} <button onClick={(e) => this.deleteTask(task.id, e)}>
+        return <li key={task.id}>{task.text} <button id={task.id} onClick={deleteTask}>
         Delete Task
       </button></li>;
       })}

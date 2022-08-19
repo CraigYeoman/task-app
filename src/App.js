@@ -5,8 +5,8 @@ import Overview from "./components/Overview";
 import uniqid from "uniqid";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       task: { text: '',
@@ -15,7 +15,7 @@ class App extends Component {
       tasks: [],
     };
 
-    this.deleteTask =this.deleteTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
   
   handleChange = (e) => {
@@ -38,10 +38,14 @@ class App extends Component {
   };
 
   deleteTask = (e) => {
+    console.log(e.target.id);
+    console.log(this.state.tasks)
+    //e.preventDefault();
     this.setState({
-
+      tasks: this.state.tasks.filter(task => task.id !== e.target.id)
     })
-  }
+    console.log(this.state.tasks)
+    };
 
   render() {
     const { task, tasks } = this.state;
@@ -60,7 +64,7 @@ class App extends Component {
           Add Task
         </button>
       </form>
-      <Overview tasks={tasks} />
+      <Overview tasks={tasks} deleteTask={this.deleteTask} />
     </div>
     );
   }
